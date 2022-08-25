@@ -26,7 +26,9 @@ Both of them do NOT require any root access.
 
 ## Download
 
-[TODO]
+- [ScrSndCpy-v1.0.tar.xz](https://github.com/neilchennc/ScrSndCpy-Linux/releases/download/v1.0/ScrSndCpy-v1.0.tar.xz)
+
+  SHA-256: 6cba6be14d17799c8160fbcd45aa1a87110ab3fd34ad808ef5992b18cff13e16
 
 ## How to use
 
