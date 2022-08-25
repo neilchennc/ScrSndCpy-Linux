@@ -1,0 +1,140 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "gcc-debug-build",
+			"command": "/usr/bin/gcc",
+			"args": [
+				"-g",
+				"-rdynamic",
+				"-no-pie",
+				"-Wall",
+				// [BEGIN] below are generated from command: `pkg-config --cflags gtk+-3.0`
+				"-pthread",
+				"-I/usr/include/gtk-3.0",
+				"-I/usr/include/at-spi2-atk/2.0",
+				"-I/usr/include/at-spi-2.0",
+				"-I/usr/include/dbus-1.0",
+				"-I/usr/lib/x86_64-linux-gnu/dbus-1.0/include",
+				"-I/usr/include/gtk-3.0",
+				"-I/usr/include/gio-unix-2.0",
+				"-I/usr/include/cairo",
+				"-I/usr/include/pango-1.0",
+				"-I/usr/include/fribidi",
+				"-I/usr/include/harfbuzz",
+				"-I/usr/include/atk-1.0",
+				"-I/usr/include/cairo",
+				"-I/usr/include/pixman-1",
+				"-I/usr/include/uuid",
+				"-I/usr/include/freetype2",
+				"-I/usr/include/libpng16",
+				"-I/usr/include/gdk-pixbuf-2.0",
+				"-I/usr/include/libmount",
+				"-I/usr/include/blkid",
+				"-I/usr/include/glib-2.0",
+				"-I/usr/lib/x86_64-linux-gnu/glib-2.0/include",
+				// [END]
+				"${workspaceFolder}/main.c",
+				"${workspaceFolder}/net.c",
+				"${workspaceFolder}/popen.c",
+				"${workspaceFolder}/track_device.c",
+				// [BEGIN] Below are generated from command: `pkg-config --libs gtk+-3.0`
+				"-lgtk-3",
+				"-lgdk-3",
+				"-lpangocairo-1.0",
+				"-lpango-1.0",
+				"-lharfbuzz",
+				"-latk-1.0",
+				"-lcairo-gobject",
+				"-lcairo",
+				"-lgdk_pixbuf-2.0",
+				"-lgio-2.0",
+				"-lgobject-2.0",
+				"-lglib-2.0",
+				// [END]
+				"-o",
+				//"${fileDirname}/${fileBasenameNoExtension}"
+				"${workspaceFolder}/ScrSndCpy"
+			],
+			"options": {
+				"cwd": "/usr/bin"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "shell",
+			"label": "gcc-release-build",
+			"command": "/usr/bin/gcc",
+			"args": [
+				"-s",
+				"-O2",
+				"-rdynamic",
+				"-no-pie",
+				"-Wall",
+				// [BEGIN] below are generated from command: `pkg-config --cflags gtk+-3.0`
+				"-pthread",
+				"-I/usr/include/gtk-3.0",
+				"-I/usr/include/at-spi2-atk/2.0",
+				"-I/usr/include/at-spi-2.0",
+				"-I/usr/include/dbus-1.0",
+				"-I/usr/lib/x86_64-linux-gnu/dbus-1.0/include",
+				"-I/usr/include/gtk-3.0",
+				"-I/usr/include/gio-unix-2.0",
+				"-I/usr/include/cairo",
+				"-I/usr/include/pango-1.0",
+				"-I/usr/include/fribidi",
+				"-I/usr/include/harfbuzz",
+				"-I/usr/include/atk-1.0",
+				"-I/usr/include/cairo",
+				"-I/usr/include/pixman-1",
+				"-I/usr/include/uuid",
+				"-I/usr/include/freetype2",
+				"-I/usr/include/libpng16",
+				"-I/usr/include/gdk-pixbuf-2.0",
+				"-I/usr/include/libmount",
+				"-I/usr/include/blkid",
+				"-I/usr/include/glib-2.0",
+				"-I/usr/lib/x86_64-linux-gnu/glib-2.0/include",
+				// [END]
+				"${workspaceFolder}/main.c",
+				"${workspaceFolder}/net.c",
+				"${workspaceFolder}/popen.c",
+				"${workspaceFolder}/track_device.c",
+				// [BEGIN] Below are generated from command: `pkg-config --libs gtk+-3.0`
+				"-lgtk-3",
+				"-lgdk-3",
+				"-lpangocairo-1.0",
+				"-lpango-1.0",
+				"-lharfbuzz",
+				"-latk-1.0",
+				"-lcairo-gobject",
+				"-lcairo",
+				"-lgdk_pixbuf-2.0",
+				"-lgio-2.0",
+				"-lgobject-2.0",
+				"-lglib-2.0",
+				// [END]
+				"-o",
+				//"${fileDirname}/${fileBasenameNoExtension}"
+				"${workspaceFolder}/ScrSndCpy"
+			],
+			"options": {
+				"cwd": "/usr/bin"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			}
+		}
+	]
+}

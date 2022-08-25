@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.2 -->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <object class="GtkWindow" id="main_window">
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">ScrSndCpy - by Neil</property>
+    <property name="resizable">False</property>
+    <signal name="destroy" handler="on_main_destroy" swapped="no"/>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkFixed">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_right">8</property>
+        <property name="margin_bottom">8</property>
+        <child>
+          <object class="GtkButton" id="button_play">
+            <property name="label" translatable="yes">Play</property>
+            <property name="width_request">240</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="on_play_button_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">8</property>
+            <property name="y">514</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Enter device or IP address:</property>
+          </object>
+          <packing>
+            <property name="x">8</property>
+            <property name="y">200</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Devices:</property>
+          </object>
+          <packing>
+            <property name="x">8</property>
+            <property name="y">8</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="entry_serial">
+            <property name="width_request">240</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="max_length">31</property>
+          </object>
+          <packing>
+            <property name="x">8</property>
+            <property name="y">220</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="check_button_borderless">
+            <property name="label" translatable="yes">Borderless</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+          </object>
+          <packing>
+            <property name="x">8</property>
+            <property name="y">263</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="check_button_always_on_top">
+            <property name="label" translatable="yes">Always on top</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+          </object>
+          <packing>
+            <property name="x">120</property>
+            <property name="y">263</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="check_button_fullscreen">
+            <property name="label" translatable="yes">Fullscreen</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+          </object>
+          <packing>
+            <property name="x">8</property>
+            <property name="y">290</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="check_button_no_control">
+            <property name="label" translatable="yes">No control</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+          </object>
+          <packing>
+            <property name="x">120</property>
+            <property name="y">290</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="check_button_stay_awake">
+            <property name="label" translatable="yes">Stay awake</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+          </object>
+          <packing>
+            <property name="x">8</property>
+            <property name="y">317</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="check_button_turn_screen_off">
+            <property name="label" translatable="yes">Turn screen off</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+          </object>
+          <packing>
+            <property name="x">120</property>
+            <property name="y">317</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="check_button_no_power_on">
+            <property name="label" translatable="yes">Don't power on device on start</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+          </object>
+          <packing>
+            <property name="x">8</property>
+            <property name="y">344</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="check_button_power_off_on_close">
+            <property name="label" translatable="yes">Power off device on close</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+          </object>
+          <packing>
+            <property name="x">8</property>
+            <property name="y">371</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Messages:</property>
+          </object>
+          <packing>
+            <property name="x">256</property>
+            <property name="y">8</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Max Size:</property>
+          </object>
+          <packing>
+            <property name="x">8</property>
+            <property name="y">407</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="entry_max_size">
+            <property name="width_request">125</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="width_chars">5</property>
+            <property name="text" translatable="yes">1920</property>
+          </object>
+          <packing>
+            <property name="x">120</property>
+            <property name="y">400</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Bitrate (Mbps):</property>
+          </object>
+          <packing>
+            <property name="x">8</property>
+            <property name="y">444</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="entry_bitrate">
+            <property name="width_request">125</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="width_chars">5</property>
+            <property name="text" translatable="yes">32</property>
+          </object>
+          <packing>
+            <property name="x">120</property>
+            <property name="y">436</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Max FPS:</property>
+          </object>
+          <packing>
+            <property name="x">8</property>
+            <property name="y">480</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="entry_max_fps">
+            <property name="width_request">125</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="width_chars">5</property>
+            <property name="text" translatable="yes">60</property>
+          </object>
+          <packing>
+            <property name="x">120</property>
+            <property name="y">472</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow" id="scrolled_window_message">
+            <property name="width_request">340</property>
+            <property name="height_request">520</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkTextView" id="text_view_message">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="wrap_mode">word</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">256</property>
+            <property name="y">28</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="width_request">240</property>
+            <property name="height_request">160</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkViewport">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkListBox" id="list_box_device">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <signal name="selected-rows-changed" handler="on_list_box_device_selected_rows_changed" swapped="no"/>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">8</property>
+            <property name="y">28</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
