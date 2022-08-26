@@ -53,6 +53,7 @@
 				"-lgobject-2.0",
 				"-lglib-2.0",
 				// [END]
+				"-lm",
 				"-o",
 				//"${fileDirname}/${fileBasenameNoExtension}"
 				"${workspaceFolder}/ScrSndCpy"
@@ -121,6 +122,7 @@
 				"-lgobject-2.0",
 				"-lglib-2.0",
 				// [END]
+				"-lm",
 				"-o",
 				//"${fileDirname}/${fileBasenameNoExtension}"
 				"${workspaceFolder}/ScrSndCpy"

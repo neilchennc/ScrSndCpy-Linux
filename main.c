@@ -1,5 +1,6 @@
 #include <gtk/gtk.h>
 #include <gio/gio.h>
+#include <math.h>
 #include "log.h"
 #include "net.h"
 #include "popen.h"
@@ -255,6 +256,43 @@ gboolean on_track_device_disconnected(gpointer data)
     return FALSE;
 }
 
+void set_default_size_and_fps()
+{
+    GdkDisplay *default_display = gdk_display_get_default();
+    int n_monitor = gdk_display_get_n_monitors(default_display);
+    // GdkMonitor *monitor = gdk_display_get_primary_monitor(default_display);
+    GdkMonitor *monitor = NULL;
+    GdkRectangle rect = {0};
+    double refresh_rate = 0;
+    double max_refresh_rate = 0;
+    int max_size = 0;
+    char temp[16];
+
+    for (int i = 0; i < n_monitor; i++)
+    {
+        monitor = gdk_display_get_monitor(default_display, i);
+        gdk_monitor_get_geometry(monitor, &rect);
+        refresh_rate = gdk_monitor_get_refresh_rate(monitor) / 1000.0;
+        n_print("Got monitor [%d]: width: %d, height: %d, refresh rate: %.3f\n", i, rect.width, rect.height, refresh_rate);
+
+        max_size = MAX(MAX(max_size, rect.width), rect.height);
+        max_refresh_rate = MAX(refresh_rate, max_refresh_rate);
+    }
+
+    n_print("max monitor size: %d, max refresh rate: %.3f\n", max_size, max_refresh_rate);
+
+    if (max_size > 0)
+    {
+        sprintf(temp, "%d", max_size);
+        gtk_entry_set_text(GTK_ENTRY(g_max_size_entry), temp);
+    }
+    if (max_refresh_rate > 0)
+    {
+        sprintf(temp, "%d", (int)round(max_refresh_rate));
+        gtk_entry_set_text(GTK_ENTRY(g_max_fps_entry), temp);
+    }
+}
+
 gboolean test_message(gpointer arg)
 {
     char *str = arg;
@@ -303,6 +341,9 @@ int main(int argc, char *argv[])
 
     gtk_widget_show(window);
 
+    // Set default size and fps for scrcpy
+    set_default_size_and_fps();
+
     // check scrcpy
     if (popen_run("scrcpy -v", append_message_text_view_new) == 0)
     {
@@ -312,6 +353,7 @@ int main(int argc, char *argv[])
     }
     else
     {
+        // show message and disable button
         append_message_text_view_new(
             "Failed to check scrcpy version.\n"
             "Execute following command to install scrcpy:\n"
