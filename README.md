@@ -26,9 +26,9 @@ Both of them do NOT require any root access.
 
 ## Download
 
-- [ScrSndCpy-v1.0.tar.xz](https://github.com/neilchennc/ScrSndCpy-Linux/releases/download/v1.0/ScrSndCpy-v1.0.tar.xz)
+- [ScrSndCpy-v1.1.tar.xz](https://github.com/neilchennc/ScrSndCpy-Linux/releases/download/v1.1/ScrSndCpy-v1.1.tar.xz)
 
-  SHA-256: 6cba6be14d17799c8160fbcd45aa1a87110ab3fd34ad808ef5992b18cff13e16
+  SHA-256: 2de81b4650317d113c2d713f93c7bc4f160d4e83ab69d40e92d9353020bc5e6a
 
 ## How to use
 
@@ -54,7 +54,7 @@ Run **ScrSndCpy**
 
 - Plug your Android devices with USB cable
 
-- You device will popup a USB debugging confirmation dialog, click "Allow" button
+- Your device will popup a USB debugging confirmation dialog, click "Allow" button
 
 - In ScrSndCpy, select a device in the ScrSndCpy
 
@@ -68,7 +68,7 @@ Run **ScrSndCpy**
 
 - Click **Play** button
 
-- You device will popup a USB debugging confirmation dialog, click "Allow" button
+- Your device will popup a USB debugging confirmation dialog, click "Allow" button
 
 - Click **Play** button again
 
