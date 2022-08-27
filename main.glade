@@ -27,7 +27,7 @@
           </object>
           <packing>
             <property name="x">8</property>
-            <property name="y">532</property>
+            <property name="y">534</property>
           </packing>
         </child>
         <child>
@@ -211,7 +211,7 @@
           </object>
           <packing>
             <property name="x">8</property>
-            <property name="y">463</property>
+            <property name="y">464</property>
           </packing>
         </child>
         <child>
@@ -224,7 +224,7 @@
           </object>
           <packing>
             <property name="x">120</property>
-            <property name="y">457</property>
+            <property name="y">458</property>
           </packing>
         </child>
         <child>
@@ -235,7 +235,7 @@
           </object>
           <packing>
             <property name="x">8</property>
-            <property name="y">499</property>
+            <property name="y">501</property>
           </packing>
         </child>
         <child>
@@ -248,7 +248,7 @@
           </object>
           <packing>
             <property name="x">120</property>
-            <property name="y">493</property>
+            <property name="y">495</property>
           </packing>
         </child>
         <child>
