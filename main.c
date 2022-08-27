@@ -293,6 +293,27 @@ void set_default_size_and_fps()
     }
 }
 
+void check_and_show_version_info()
+{
+    append_message_text_view_new("ScrSndCpy 1.0 <https://github.com/neilchennc/ScrSndCpy-Linux>\n");
+    append_message_text_view_new("sndcpy 1.1 <https://github.com/rom1v/sndcpy>\n");
+    if (popen_run("scrcpy -v", append_message_text_view_new) == 0)
+    {
+        // start tracking devices
+        track_device_init(on_track_device_new_devices, on_track_device_disconnected);
+        track_device_start();
+    }
+    else
+    {
+        // show message and disable button
+        append_message_text_view_new(
+            "Failed to check scrcpy version.\n"
+            "Execute following command to install scrcpy:\n"
+            "sudo apt install scrcpy\n");
+        gtk_widget_set_sensitive(g_play_button, FALSE);
+    }
+}
+
 gboolean test_message(gpointer arg)
 {
     char *str = arg;
@@ -344,22 +365,8 @@ int main(int argc, char *argv[])
     // Set default size and fps for scrcpy
     set_default_size_and_fps();
 
-    // check scrcpy
-    if (popen_run("scrcpy -v", append_message_text_view_new) == 0)
-    {
-        // start tracking devices
-        track_device_init(on_track_device_new_devices, on_track_device_disconnected);
-        track_device_start();
-    }
-    else
-    {
-        // show message and disable button
-        append_message_text_view_new(
-            "Failed to check scrcpy version.\n"
-            "Execute following command to install scrcpy:\n"
-            "sudo apt install scrcpy\n");
-        gtk_widget_set_sensitive(g_play_button, FALSE);
-    }
+    // check scrcpy and show version info
+    check_and_show_version_info();
 
     gtk_main();
 

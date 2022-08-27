@@ -253,7 +253,7 @@
         </child>
         <child>
           <object class="GtkScrolledWindow" id="scrolled_window_message">
-            <property name="width_request">340</property>
+            <property name="width_request">450</property>
             <property name="height_request">520</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
