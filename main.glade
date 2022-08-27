@@ -57,6 +57,7 @@
             <property name="width_request">240</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="has_focus">True</property>
             <property name="max_length">31</property>
           </object>
           <packing>
@@ -254,7 +255,7 @@
         <child>
           <object class="GtkScrolledWindow" id="scrolled_window_message">
             <property name="width_request">450</property>
-            <property name="height_request">538</property>
+            <property name="height_request">540</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="shadow_type">in</property>
