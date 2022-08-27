@@ -16,6 +16,8 @@ GtkWidget *g_stay_awake_check_button;
 GtkWidget *g_turn_screen_off_check_button;
 GtkWidget *g_no_power_on_check_button;
 GtkWidget *g_power_off_on_close_check_button;
+GtkWidget *g_show_touches_check_button;
+GtkWidget *g_no_key_repeat_check_button;
 GtkWidget *g_max_size_entry;
 GtkWidget *g_bitrate_entry;
 GtkWidget *g_max_fps_entry;
@@ -112,6 +114,12 @@ gboolean launch_scrcpy(gpointer arg)
     // power off on close
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(g_power_off_on_close_check_button)))
         strcat(command, " --power-off-on-close");
+    // show touches
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(g_show_touches_check_button)))
+        strcat(command, " --show-touches");
+    // no key repeat
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(g_no_key_repeat_check_button)))
+        strcat(command, " --no-key-repeat");
 
     sprintf(message, "Run command: %s\n", command);
     append_message_text_view_new(message);
@@ -351,6 +359,8 @@ int main(int argc, char *argv[])
     g_turn_screen_off_check_button = GTK_WIDGET(gtk_builder_get_object(builder, "check_button_turn_screen_off"));
     g_no_power_on_check_button = GTK_WIDGET(gtk_builder_get_object(builder, "check_button_no_power_on"));
     g_power_off_on_close_check_button = GTK_WIDGET(gtk_builder_get_object(builder, "check_button_power_off_on_close"));
+    g_show_touches_check_button = GTK_WIDGET(gtk_builder_get_object(builder, "check_buttun_show_touches"));
+    g_no_key_repeat_check_button = GTK_WIDGET(gtk_builder_get_object(builder, "check_button_no_key_repeat"));
     g_max_size_entry = GTK_WIDGET(gtk_builder_get_object(builder, "entry_max_size"));
     g_bitrate_entry = GTK_WIDGET(gtk_builder_get_object(builder, "entry_bitrate"));
     g_max_fps_entry = GTK_WIDGET(gtk_builder_get_object(builder, "entry_max_fps"));

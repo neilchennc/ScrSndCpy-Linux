@@ -19,7 +19,7 @@
         <child>
           <object class="GtkButton" id="button_play">
             <property name="label" translatable="yes">Play</property>
-            <property name="width_request">240</property>
+            <property name="width_request">238</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -27,7 +27,7 @@
           </object>
           <packing>
             <property name="x">8</property>
-            <property name="y">514</property>
+            <property name="y">532</property>
           </packing>
         </child>
         <child>
@@ -100,7 +100,7 @@
           </object>
           <packing>
             <property name="x">8</property>
-            <property name="y">290</property>
+            <property name="y">289</property>
           </packing>
         </child>
         <child>
@@ -112,8 +112,8 @@
             <property name="draw_indicator">True</property>
           </object>
           <packing>
-            <property name="x">120</property>
-            <property name="y">290</property>
+            <property name="x">8</property>
+            <property name="y">341</property>
           </packing>
         </child>
         <child>
@@ -126,7 +126,7 @@
           </object>
           <packing>
             <property name="x">8</property>
-            <property name="y">317</property>
+            <property name="y">315</property>
           </packing>
         </child>
         <child>
@@ -139,7 +139,7 @@
           </object>
           <packing>
             <property name="x">120</property>
-            <property name="y">317</property>
+            <property name="y">315</property>
           </packing>
         </child>
         <child>
@@ -152,7 +152,7 @@
           </object>
           <packing>
             <property name="x">8</property>
-            <property name="y">344</property>
+            <property name="y">367</property>
           </packing>
         </child>
         <child>
@@ -165,7 +165,7 @@
           </object>
           <packing>
             <property name="x">8</property>
-            <property name="y">371</property>
+            <property name="y">393</property>
           </packing>
         </child>
         <child>
@@ -187,7 +187,7 @@
           </object>
           <packing>
             <property name="x">8</property>
-            <property name="y">407</property>
+            <property name="y">427</property>
           </packing>
         </child>
         <child>
@@ -200,7 +200,7 @@
           </object>
           <packing>
             <property name="x">120</property>
-            <property name="y">400</property>
+            <property name="y">421</property>
           </packing>
         </child>
         <child>
@@ -211,7 +211,7 @@
           </object>
           <packing>
             <property name="x">8</property>
-            <property name="y">444</property>
+            <property name="y">463</property>
           </packing>
         </child>
         <child>
@@ -224,7 +224,7 @@
           </object>
           <packing>
             <property name="x">120</property>
-            <property name="y">436</property>
+            <property name="y">457</property>
           </packing>
         </child>
         <child>
@@ -235,7 +235,7 @@
           </object>
           <packing>
             <property name="x">8</property>
-            <property name="y">480</property>
+            <property name="y">499</property>
           </packing>
         </child>
         <child>
@@ -248,13 +248,13 @@
           </object>
           <packing>
             <property name="x">120</property>
-            <property name="y">472</property>
+            <property name="y">493</property>
           </packing>
         </child>
         <child>
           <object class="GtkScrolledWindow" id="scrolled_window_message">
             <property name="width_request">450</property>
-            <property name="height_request">520</property>
+            <property name="height_request">538</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="shadow_type">in</property>
@@ -295,6 +295,32 @@
           <packing>
             <property name="x">8</property>
             <property name="y">28</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="check_buttun_show_touches">
+            <property name="label" translatable="yes">Show touches</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+          </object>
+          <packing>
+            <property name="x">120</property>
+            <property name="y">289</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="check_button_no_key_repeat">
+            <property name="label" translatable="yes">No key repeat</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+          </object>
+          <packing>
+            <property name="x">120</property>
+            <property name="y">341</property>
           </packing>
         </child>
       </object>
