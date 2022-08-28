@@ -32,35 +32,53 @@ Both of them do NOT require any root access.
 
 ## How to use
 
-Your Android devices must [enable debugging mode](https://developer.android.com/studio/command-line/adb.html#Enabling) before using ScrSndCpy, or find [tutorial videos on YouTube](https://www.youtube.com/results?search_query=android+enable+usb+debugging).
+### Preparation
 
-Install scrcpy:
+- Your Android devices must [enable debugging mode](https://developer.android.com/studio/command-line/adb.html#Enabling) before using ScrSndCpy, or find [tutorial videos on YouTube](https://www.youtube.com/results?search_query=android+enable+usb+debugging).
 
-```bash
-sudo apt install scrcpy
-```
+- Install scrcpy:
 
-Install VLC (for audio output):
+  ```bash
+  sudo apt install scrcpy
+  ```
 
-```bash
-sudo apt install vlc
-```
+- Install VLC (for audio output):
 
-Download latest ScrSndCpy and extract it
+  ```bash
+  sudo apt install vlc
+  ```
 
-Run **ScrSndCpy**
+- Download latest ScrSndCpy and extract it
 
-### Connect via USB
+- Run **ScrSndCpy**
 
-- Plug your Android devices with USB cable
+### Method 1: Connect via USB
+
+- Plug the device into a USB port on your computer
 
 - Your device will popup a USB debugging confirmation dialog, click "Allow" button
 
-- In ScrSndCpy, select a device in the ScrSndCpy
+- In ScrSndCpy, select a device from the list
 
 - Click **Play** button
 
-### Connect via Wi-Fi (TCP/IP)
+### Method 2: Connect via Wi-Fi (TCP/IP)
+
+#### Setup (**only for the first time**)
+
+You have to enable tcp port on your device with following steps
+
+- Plug the device into a USB port on your computer
+
+- Enable adb over TCP/IP on your device with command:
+
+  ```bash
+  adb tcpip 5555
+  ```
+
+- Unplug your device
+
+#### Connect
 
 - Connect to Wi-Fi access point, note that your PC must connect to the same access point (network segment)
 
