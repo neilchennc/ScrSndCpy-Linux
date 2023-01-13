@@ -1,3 +1,5 @@
+#include "net.h"
+
 #include <arpa/inet.h>
 
 int is_valid_ip_address(char *address)
