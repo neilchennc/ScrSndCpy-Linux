@@ -375,7 +375,7 @@ void save_to_preference_file()
 
 void check_and_show_version_info()
 {
-    append_message_text_view_new("ScrSndCpy 1.1 <https://github.com/neilchennc/ScrSndCpy-Linux>\n");
+    append_message_text_view_new("ScrSndCpy 1.2 <https://github.com/neilchennc/ScrSndCpy-Linux>\n");
     append_message_text_view_new("sndcpy 1.1 <https://github.com/rom1v/sndcpy>\n");
     if (popen_run("scrcpy -v", append_message_text_view_new) == 0)
     {
