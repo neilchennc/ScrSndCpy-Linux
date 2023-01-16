@@ -38,6 +38,7 @@
 				"${workspaceFolder}/main.c",
 				"${workspaceFolder}/net.c",
 				"${workspaceFolder}/popen.c",
+				"${workspaceFolder}/preference.c",
 				"${workspaceFolder}/track_device.c",
 				// [BEGIN] Below are generated from command: `pkg-config --libs gtk+-3.0`
 				"-lgtk-3",
@@ -107,6 +108,7 @@
 				"${workspaceFolder}/main.c",
 				"${workspaceFolder}/net.c",
 				"${workspaceFolder}/popen.c",
+				"${workspaceFolder}/preference.c",
 				"${workspaceFolder}/track_device.c",
 				// [BEGIN] Below are generated from command: `pkg-config --libs gtk+-3.0`
 				"-lgtk-3",

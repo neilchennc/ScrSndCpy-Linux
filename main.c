@@ -4,6 +4,7 @@
 #include "log.h"
 #include "net.h"
 #include "popen.h"
+#include "preference.h"
 #include "track_device.h"
 
 GtkWidget *g_device_list_box;
@@ -301,6 +302,77 @@ void set_default_size_and_fps()
     }
 }
 
+void load_from_preference_file()
+{
+    char temp[16];
+    preference_t pref = {0};
+    preference_load(&pref);
+
+    if (pref.max_size > 0)
+    {
+        sprintf(temp, "%d", pref.max_size);
+        gtk_entry_set_text(GTK_ENTRY(g_max_size_entry), temp);
+    }
+    if (pref.bitrate > 0)
+    {
+        sprintf(temp, "%d", pref.bitrate);
+        gtk_entry_set_text(GTK_ENTRY(g_bitrate_entry), temp);
+    }
+    if (pref.max_fps > 0)
+    {
+        sprintf(temp, "%d", pref.max_fps);
+        gtk_entry_set_text(GTK_ENTRY(g_max_fps_entry), temp);
+    }
+
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(g_borderless_check_button), pref.borderless != 0);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(g_always_on_top_check_button), pref.always_on_top != 0);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(g_fullscreen_check_button), pref.fullscreen != 0);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(g_no_control_check_button), pref.no_control != 0);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(g_stay_awake_check_button), pref.stay_awake != 0);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(g_turn_screen_off_check_button), pref.turn_screen_off != 0);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(g_no_power_on_check_button), pref.no_power_on != 0);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(g_power_off_on_close_check_button), pref.power_off_on_close != 0);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(g_show_touches_check_button), pref.show_touches != 0);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(g_no_key_repeat_check_button), pref.no_key_repeat != 0);
+}
+
+void save_to_preference_file()
+{
+    const gchar *nptr;
+    preference_t pref = {0};
+
+    nptr = gtk_entry_get_text(GTK_ENTRY(g_max_size_entry));
+    if (strlen(nptr) > 0)
+    {
+        pref.max_size = g_ascii_strtoll(nptr, NULL, 10);
+    }
+
+    nptr = gtk_entry_get_text(GTK_ENTRY(g_bitrate_entry));
+    if (strlen(nptr) > 0)
+    {
+        pref.bitrate = g_ascii_strtoll(nptr, NULL, 10);
+    }
+
+    nptr = gtk_entry_get_text(GTK_ENTRY(g_max_fps_entry));
+    if (strlen(nptr) > 0)
+    {
+        pref.max_fps = g_ascii_strtoll(nptr, NULL, 10);
+    }
+
+    pref.borderless = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(g_borderless_check_button)) ? 1 : 0;
+    pref.always_on_top = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(g_always_on_top_check_button)) ? 1 : 0;
+    pref.fullscreen = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(g_fullscreen_check_button)) ? 1 : 0;
+    pref.no_control = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(g_no_control_check_button)) ? 1 : 0;
+    pref.stay_awake = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(g_stay_awake_check_button)) ? 1 : 0;
+    pref.turn_screen_off = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(g_turn_screen_off_check_button)) ? 1 : 0;
+    pref.no_power_on = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(g_no_power_on_check_button)) ? 1 : 0;
+    pref.power_off_on_close = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(g_power_off_on_close_check_button)) ? 1 : 0;
+    pref.show_touches = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(g_show_touches_check_button)) ? 1 : 0;
+    pref.no_key_repeat = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(g_no_key_repeat_check_button)) ? 1 : 0;
+
+    preference_save(&pref);
+}
+
 void check_and_show_version_info()
 {
     append_message_text_view_new("ScrSndCpy 1.1 <https://github.com/neilchennc/ScrSndCpy-Linux>\n");
@@ -375,6 +447,9 @@ int main(int argc, char *argv[])
     // Set default size and fps for scrcpy
     set_default_size_and_fps();
 
+    // Load preference
+    load_from_preference_file();
+
     // check scrcpy and show version info
     check_and_show_version_info();
 
@@ -409,5 +484,8 @@ void on_play_button_clicked()
 
 void on_main_destroy()
 {
+    // Save current preferences
+    save_to_preference_file();
+
     gtk_main_quit();
 }

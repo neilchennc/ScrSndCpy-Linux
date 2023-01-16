@@ -16,6 +16,9 @@
 # Executable
 ScrSndCpy
 
+# Key file
+*.ini
+
 # sndcpy
 sndcpy
 sndcpy.apk

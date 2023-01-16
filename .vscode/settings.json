@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "gtk.h": "c",
-        "memory.h": "c"
+        "memory.h": "c",
+        "log.h": "c"
     }
 }
