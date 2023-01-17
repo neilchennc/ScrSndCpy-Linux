@@ -487,5 +487,8 @@ void on_main_destroy()
     // Save current preferences
     save_to_preference_file();
 
+    // Close adbd connection
+    track_device_close();
+
     gtk_main_quit();
 }

@@ -155,9 +155,25 @@ void track_device_close()
     GError *error;
 
     if (input_stream)
+    {
+        g_input_stream_clear_pending(input_stream);
         g_input_stream_close(input_stream, NULL, &error);
+        // g_assert_true(g_input_stream_is_closed(input_stream));
+        input_stream = NULL;
+    }
+
     if (output_stream)
+    {
+        g_output_stream_clear_pending(output_stream);
         g_output_stream_close(output_stream, NULL, &error);
+        // g_assert_true(g_output_stream_is_closed(output_stream));
+        output_stream = NULL;
+    }
+
     if (connection)
+    {
         g_socket_close(g_socket_connection_get_socket(connection), &error);
+        // g_assert_true(g_socket_is_closed(g_socket_connection_get_socket(connection)));
+        connection = NULL;
+    }
 }
