@@ -86,8 +86,6 @@ int preference_load(preference_t *pref)
     }
 
     return 0;
-
-    // return 0;
 }
 
 void preference_save(preference_t *pref)
