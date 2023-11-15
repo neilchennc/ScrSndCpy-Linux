@@ -354,8 +354,6 @@ void check_and_show_version_info()
     // scrcpy version
     if (popen_run("scrcpy -v", append_message_text_view_new) == 0)
     {
-        append_message_text_view_new("\n");
-
         // start tracking devices
         track_device_init(on_track_device_new_devices, on_track_device_disconnected);
         track_device_start();
@@ -365,6 +363,7 @@ void check_and_show_version_info()
         append_message_text_view_new("Failed to check scrcpy version.\n");
         is_success = FALSE;
     }
+    append_message_text_view_new("\n");
 
     // adb version
     if (popen_run("adb --version", append_message_text_view_new) == 0)
