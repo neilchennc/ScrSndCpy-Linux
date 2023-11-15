@@ -346,22 +346,39 @@ void save_to_preference_file()
 
 void check_and_show_version_info()
 {
-    append_message_text_view_new("ScrSndCpy 1.2 <https://github.com/neilchennc/ScrSndCpy-Linux>\n");
+    gboolean is_success = TRUE;
+
+    // ScrSndCpy
+    append_message_text_view_new("ScrSndCpy 1.2 <https://github.com/neilchennc/ScrSndCpy-Linux>\n\n");
+
+    // scrcpy version
     if (popen_run("scrcpy -v", append_message_text_view_new) == 0)
     {
+        append_message_text_view_new("\n");
+
         // start tracking devices
         track_device_init(on_track_device_new_devices, on_track_device_disconnected);
         track_device_start();
     }
     else
     {
-        // show message and disable button
-        append_message_text_view_new(
-            "Failed to check scrcpy version.\n"
-            "Execute following command to install scrcpy:\n"
-            "sudo apt install scrcpy\n");
-        gtk_widget_set_sensitive(g_play_button, FALSE);
+        append_message_text_view_new("Failed to check scrcpy version.\n");
+        is_success = FALSE;
     }
+
+    // adb version
+    if (popen_run("adb --version", append_message_text_view_new) == 0)
+    {
+        append_message_text_view_new("\n");
+    }
+    else
+    {
+        append_message_text_view_new("Failed to check adb version.\n");
+        is_success = FALSE;
+    }
+
+    // disable or enable play button
+    gtk_widget_set_sensitive(g_play_button, is_success);
 }
 
 gboolean test_message(gpointer arg)
