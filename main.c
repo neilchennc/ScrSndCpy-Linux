@@ -80,7 +80,7 @@ gboolean launch_scrcpy(gpointer arg)
     ptr = gtk_entry_get_text(GTK_ENTRY(g_bitrate_entry));
     if (strlen(ptr) > 0)
     {
-        strcat(command, " --bit-rate=");
+        strcat(command, " --video-bit-rate=");
         strcat(command, ptr);
         strcat(command, "M");
     }
@@ -130,29 +130,6 @@ gboolean launch_scrcpy(gpointer arg)
     return FALSE;
 }
 
-gboolean launch_sndcpy(gpointer arg)
-{
-    char *serial = arg;
-    char message[128];
-    char command[64];
-
-    sprintf(command, "./sndcpy %s", serial);
-    sprintf(message, "Run command: %s\n", command);
-    append_message_text_view_new(message);
-
-    popen_run(command, append_message_text_view_new);
-
-    return FALSE;
-}
-
-void adb_stop_sndcpy(char *serial)
-{
-    char command[128];
-
-    sprintf(command, "adb -s %s shell am force-stop com.rom1v.sndcpy", serial);
-    popen_run(command, NULL);
-}
-
 gboolean connect_to_device(gpointer arg)
 {
     char *serial = arg;
@@ -190,17 +167,11 @@ gboolean connect_to_device(gpointer arg)
         return FALSE;
     }
 
-    // launch scrcpy & sndcpy
+    // launch scrcpy
     GThread *scrcpy_thread = g_thread_new("launch-scrcpy", (GThreadFunc)launch_scrcpy, serial);
-    GThread *sndcpy_thread = g_thread_new("launch-sndcpy", (GThreadFunc)launch_sndcpy, serial);
 
     g_thread_join(scrcpy_thread);
     append_message_text_view_new("scrcpy stopped.\n");
-
-    adb_stop_sndcpy(serial);
-
-    g_thread_join(sndcpy_thread);
-    append_message_text_view_new("sndcpy stopped.\n");
 
     n_print("Exit connect to %s.\n", serial);
     free(serial);
@@ -376,7 +347,6 @@ void save_to_preference_file()
 void check_and_show_version_info()
 {
     append_message_text_view_new("ScrSndCpy 1.2 <https://github.com/neilchennc/ScrSndCpy-Linux>\n");
-    append_message_text_view_new("sndcpy 1.1 <https://github.com/rom1v/sndcpy>\n");
     if (popen_run("scrcpy -v", append_message_text_view_new) == 0)
     {
         // start tracking devices
