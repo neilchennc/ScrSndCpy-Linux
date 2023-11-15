@@ -349,7 +349,7 @@ void check_and_show_version_info()
     gboolean is_success = TRUE;
 
     // ScrSndCpy
-    append_message_text_view_new("ScrSndCpy 1.2 <https://github.com/neilchennc/ScrSndCpy-Linux>\n\n");
+    append_message_text_view_new("ScrSndCpy 1.3 <https://github.com/neilchennc/ScrSndCpy-Linux>\n\n");
 
     // scrcpy version
     if (popen_run("scrcpy -v", append_message_text_view_new) == 0)
