@@ -149,7 +149,7 @@ second time. For example, to execute "Expand settings panel":
 All <kbd>Ctrl</kbd>+_key_ shortcuts are forwarded to the device, so they are
 handled by the active application.
 
-You can check out [scrcpy](https://github.com/Genymobile/scrcpy) and [sndcpy](https://github.com/rom1v/sndcpy) for more introductions, functions and controls.
+You can check out [scrcpy](https://github.com/Genymobile/scrcpy) for more introductions, functions and controls.
 
 ## Development environment
 
