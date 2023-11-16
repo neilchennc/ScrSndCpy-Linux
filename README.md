@@ -2,33 +2,29 @@
 
 *ScrSndCpy = **Scr**een **S**ou**nd** **C**o**py***
 
-A Linux (Ubuntu/Debian) GUI application executes both [scrcpy](https://github.com/Genymobile/scrcpy) and [sndcpy](https://github.com/rom1v/sndcpy) simultaneously, used to display screen, sound and control Android phones or tablets.
+A Linux (Ubuntu/Debian) GUI application to display screen, audio and control your Android devices on PC by executing [scrcpy](https://github.com/Genymobile/scrcpy) (passing commands and parameters to [scrcpy](https://github.com/Genymobile/scrcpy)).
 
 ![Screenshot](screenshots/scrsndcpy-screen.png "Screenshot")
 
 *Looking for Windows version? [Click here](https://github.com/neilchennc/ScrSndCpy-Windows)*
 
-## About scrcpy and sndcpy
+## About scrcpy
 
 [scrcpy](https://github.com/Genymobile/scrcpy) (Screen Copy) is an application provides display and control of Android devices connected via USB or over TCP/IP (requires at least Android 5.0) which developed by Genymobile.
 
-[sndcpy](https://github.com/rom1v/sndcpy) (Sound Copy) is an application forwards audio from an Android device to the computer (requires at least Android 10, and [VLC](https://www.videolan.org/) must be installed on the PC) which developed by rom1v.
-
-Both of them do NOT require any root access.
+It does NOT require any root access.
 
 ## Requirements
 
 - Linux (Ubuntu/Debian)
 
-- Android 5.0+ (or Android 10+ if you want audio output)
-
-- [VLC](https://www.videolan.org/) installed (install on PC, for audio output)
+- Android 5.0+ (Audio forwarding must Android 11+)
 
 ## Download
 
-- [ScrSndCpy-v1.2.tar.xz](https://github.com/neilchennc/ScrSndCpy-Linux/releases/download/v1.2/ScrSndCpy-v1.2.tar.xz)
+- [ScrSndCpy-v1.3.tar.xz](https://github.com/neilchennc/ScrSndCpy-Linux/releases/download/v1.3/ScrSndCpy-v1.3.tar.xz) (Built on Ubuntu 20.04.6)
 
-  SHA-256: 2e92d69c1e827b9ffb525e1f99424285801d0ee7816c8ada4c2eeb43b6032fc6
+  SHA-256: fe236d311f2b997d7149aef9ed1a5d959da2a3849958483cda671465221782b7
 
 ## How to use
 
@@ -36,19 +32,13 @@ Both of them do NOT require any root access.
 
 - Your Android devices must [enable debugging mode](https://developer.android.com/studio/command-line/adb.html#Enabling) before using ScrSndCpy, or find [tutorial videos on YouTube](https://www.youtube.com/results?search_query=android+enable+usb+debugging).
 
-- Install scrcpy:
+- Install latest **scrcpy** (or recommanded [build yourself](https://github.com/Genymobile/scrcpy/blob/master/doc/build.md)):
 
   ```bash
   sudo apt install scrcpy
   ```
 
-- Install VLC (for audio output):
-
-  ```bash
-  sudo apt install vlc
-  ```
-
-- Download latest ScrSndCpy and extract it
+- Download latest **ScrSndCpy** (or recommanded [build yourself](#build)) and extract it
 
 - Run **ScrSndCpy**
 
@@ -90,10 +80,24 @@ You have to enable tcp port on your device with following steps
 
 - Click **Play** button again
 
-## Shortcuts (references from scrcpy 1.24)
+## Shortcuts (references from [scrcpy 2.2](https://github.com/Genymobile/scrcpy/blob/master/doc/shortcuts.md))
+
+Actions can be performed on the scrcpy window using keyboard and mouse
+shortcuts.
 
 In the following list, <kbd>MOD</kbd> is the shortcut modifier. By default, it's
 (left) <kbd>Alt</kbd> or (left) <kbd>Super</kbd>.
+
+It can be changed using `--shortcut-mod`. Possible keys are `lctrl`, `rctrl`,
+`lalt`, `ralt`, `lsuper` and `rsuper`. For example:
+
+```bash
+# use RCtrl for shortcuts
+scrcpy --shortcut-mod=rctrl
+
+# use either LCtrl+LAlt or LSuper for shortcuts
+scrcpy --shortcut-mod=lctrl+lalt,lsuper
+```
 
 _<kbd>[Super]</kbd> is typically the <kbd>Windows</kbd> or <kbd>Cmd</kbd> key._
 
@@ -107,7 +111,7 @@ _<kbd>[Super]</kbd> is typically the <kbd>Windows</kbd> or <kbd>Cmd</kbd> key._
  | Resize window to 1:1 (pixel-perfect)        | <kbd>MOD</kbd>+<kbd>g</kbd>
  | Resize window to remove black borders       | <kbd>MOD</kbd>+<kbd>w</kbd> \| _Double-left-click¹_
  | Click on `HOME`                             | <kbd>MOD</kbd>+<kbd>h</kbd> \| _Middle-click_
- | Click on `BACK`                             | <kbd>MOD</kbd>+<kbd>b</kbd> \| _Right-click²_
+ | Click on `BACK`                             | <kbd>MOD</kbd>+<kbd>b</kbd> \| <kbd>MOD</kbd>+<kbd>Backspace</kbd> \| _Right-click²_
  | Click on `APP_SWITCH`                       | <kbd>MOD</kbd>+<kbd>s</kbd> \| _4th-click³_
  | Click on `MENU` (unlock screen)⁴            | <kbd>MOD</kbd>+<kbd>m</kbd>
  | Click on `VOLUME_UP`                        | <kbd>MOD</kbd>+<kbd>↑</kbd> _(up)_
@@ -127,13 +131,23 @@ _<kbd>[Super]</kbd> is typically the <kbd>Windows</kbd> or <kbd>Cmd</kbd> key._
  | Enable/disable FPS counter (on stdout)      | <kbd>MOD</kbd>+<kbd>i</kbd>
  | Pinch-to-zoom                               | <kbd>Ctrl</kbd>+_click-and-move_
  | Drag & drop APK file                        | Install APK from computer
- | Drag & drop non-APK file                    | Push file to device
+ | Drag & drop non-APK file                    | [Push file to device](control.md#push-file-to-device)
 
 _¹Double-click on black borders to remove them._  
 _²Right-click turns the screen on if it was off, presses BACK otherwise._  
 _³4th and 5th mouse buttons, if your mouse has them._  
 _⁴For react-native apps in development, `MENU` triggers development menu._  
 _⁵Only on Android >= 7._
+
+Shortcuts with repeated keys are executed by releasing and pressing the key a
+second time. For example, to execute "Expand settings panel":
+
+ 1. Press and keep pressing <kbd>MOD</kbd>.
+ 2. Then double-press <kbd>n</kbd>.
+ 3. Finally, release <kbd>MOD</kbd>.
+
+All <kbd>Ctrl</kbd>+_key_ shortcuts are forwarded to the device, so they are
+handled by the active application.
 
 You can check out [scrcpy](https://github.com/Genymobile/scrcpy) and [sndcpy](https://github.com/rom1v/sndcpy) for more introductions, functions and controls.
 
@@ -148,3 +162,36 @@ You can check out [scrcpy](https://github.com/Genymobile/scrcpy) and [sndcpy](ht
 - Language: C
 
 - IDE: Visual Studio Code
+
+## Build
+
+Install build tools and GTK3
+
+```bash
+sudo apt update
+
+# build-essential
+sudo apt install build-essential
+
+# GTK3
+sudo apt install libgtk-3-dev
+```
+
+Clone the project
+
+```bash
+git clone https://github.com/neilchennc/ScrSndCpy-Linux.git
+cd ScrSndCpy-Linux
+```
+
+Build
+
+```bash
+make
+```
+
+Run
+
+```bash
+./ScrSndCpy
+```
